@@ -2,7 +2,6 @@
 //  FilterCam.h
 //  FilterCam
 //
-//  Created by hajime-nakamura on 2018/06/16.
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 

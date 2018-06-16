@@ -12,6 +12,13 @@
 		64A3BC4720D4D66B00CF0E79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A3BC4520D4D66B00CF0E79 /* Main.storyboard */; };
 		64A3BC4920D4D66C00CF0E79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64A3BC4820D4D66C00CF0E79 /* Assets.xcassets */; };
 		64A3BC4C20D4D66C00CF0E79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A3BC4A20D4D66C00CF0E79 /* LaunchScreen.storyboard */; };
+		64A3BC6420D4E20E00CF0E79 /* RecorderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC5C20D4E20E00CF0E79 /* RecorderError.swift */; };
+		64A3BC6520D4E20E00CF0E79 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC5D20D4E20E00CF0E79 /* Recorder.swift */; };
+		64A3BC6620D4E20E00CF0E79 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC5E20D4E20E00CF0E79 /* Capture.swift */; };
+		64A3BC6720D4E20E00CF0E79 /* FilterCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC5F20D4E20E00CF0E79 /* FilterCamViewController.swift */; };
+		64A3BC6820D4E20E00CF0E79 /* CaptureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC6020D4E20E00CF0E79 /* CaptureError.swift */; };
+		64A3BC6A20D4E20E00CF0E79 /* FrameRateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC6320D4E20E00CF0E79 /* FrameRateCalculator.swift */; };
+		64A3BC6C20D4FC7100CF0E79 /* Composer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC6B20D4FC7100CF0E79 /* Composer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,14 @@
 		64A3BC4820D4D66C00CF0E79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64A3BC4B20D4D66C00CF0E79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64A3BC4D20D4D66C00CF0E79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A3BC5C20D4E20E00CF0E79 /* RecorderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderError.swift; sourceTree = "<group>"; };
+		64A3BC5D20D4E20E00CF0E79 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		64A3BC5E20D4E20E00CF0E79 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		64A3BC5F20D4E20E00CF0E79 /* FilterCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCamViewController.swift; sourceTree = "<group>"; };
+		64A3BC6020D4E20E00CF0E79 /* CaptureError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureError.swift; sourceTree = "<group>"; };
+		64A3BC6120D4E20E00CF0E79 /* FilterCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCam.h; sourceTree = "<group>"; };
+		64A3BC6320D4E20E00CF0E79 /* FrameRateCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameRateCalculator.swift; sourceTree = "<group>"; };
+		64A3BC6B20D4FC7100CF0E79 /* Composer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +53,7 @@
 		64A3BC3520D4D66B00CF0E79 = {
 			isa = PBXGroup;
 			children = (
+				64A3BC5B20D4E20E00CF0E79 /* FilterCam */,
 				64A3BC4020D4D66B00CF0E79 /* Example */,
 				64A3BC3F20D4D66B00CF0E79 /* Products */,
 			);
@@ -62,6 +78,22 @@
 				64A3BC4D20D4D66C00CF0E79 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		64A3BC5B20D4E20E00CF0E79 /* FilterCam */ = {
+			isa = PBXGroup;
+			children = (
+				64A3BC5C20D4E20E00CF0E79 /* RecorderError.swift */,
+				64A3BC5D20D4E20E00CF0E79 /* Recorder.swift */,
+				64A3BC5E20D4E20E00CF0E79 /* Capture.swift */,
+				64A3BC5F20D4E20E00CF0E79 /* FilterCamViewController.swift */,
+				64A3BC6020D4E20E00CF0E79 /* CaptureError.swift */,
+				64A3BC6120D4E20E00CF0E79 /* FilterCam.h */,
+				64A3BC6320D4E20E00CF0E79 /* FrameRateCalculator.swift */,
+				64A3BC6B20D4FC7100CF0E79 /* Composer.swift */,
+			);
+			name = FilterCam;
+			path = ../FilterCam;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +167,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A3BC6720D4E20E00CF0E79 /* FilterCamViewController.swift in Sources */,
 				64A3BC4420D4D66B00CF0E79 /* ViewController.swift in Sources */,
+				64A3BC6C20D4FC7100CF0E79 /* Composer.swift in Sources */,
 				64A3BC4220D4D66B00CF0E79 /* AppDelegate.swift in Sources */,
+				64A3BC6420D4E20E00CF0E79 /* RecorderError.swift in Sources */,
+				64A3BC6620D4E20E00CF0E79 /* Capture.swift in Sources */,
+				64A3BC6A20D4E20E00CF0E79 /* FrameRateCalculator.swift in Sources */,
+				64A3BC6520D4E20E00CF0E79 /* Recorder.swift in Sources */,
+				64A3BC6820D4E20E00CF0E79 /* CaptureError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,8 +320,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7WCTQL5GRC;
+				DEVELOPMENT_TEAM = QA8AV789YN;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,8 +339,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7WCTQL5GRC;
+				DEVELOPMENT_TEAM = QA8AV789YN;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:../../FilterCam"
+      name = "FilterCam">
+      <FileRef
+         location = "group:RecorderError.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Recorder.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Capture.swift">
+      </FileRef>
+      <FileRef
+         location = "group:FilterCamViewController.swift">
+      </FileRef>
+      <FileRef
+         location = "group:CaptureError.swift">
+      </FileRef>
+      <FileRef
+         location = "group:FilterCam.h">
+      </FileRef>
+      <FileRef
+         location = "group:Info.plist">
+      </FileRef>
+      <FileRef
+         location = "group:FrameRateCalculator.swift">
+      </FileRef>
+   </Group>
    <FileRef
-      location = "self:Example.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
