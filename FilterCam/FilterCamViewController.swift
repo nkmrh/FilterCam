@@ -9,7 +9,7 @@ import UIKit
 import GLKit
 import AVFoundation
 
-protocol FilterCamViewControllerDelegate: class {
+public protocol FilterCamViewControllerDelegate: class {
     func filterCamDidStartRecording(_ filterCam: FilterCamViewController)
     func filterCamDidFinishRecording(_ filterCame: FilterCamViewController)
     func filterCam(_ filterCam: FilterCamViewController, didFailToRecord error: Error)
@@ -17,29 +17,25 @@ protocol FilterCamViewControllerDelegate: class {
     func filterCam(_ filterCam: FilterCamViewController, didFocusAtPoint tapPoint: CGPoint)
 }
 
-public class FilterCamViewController: UIViewController {
+open class FilterCamViewController: UIViewController {
 
-    weak var cameraDelegate: FilterCamViewControllerDelegate?
+    public weak var cameraDelegate: FilterCamViewControllerDelegate?
 
-    var devicePosition = AVCaptureDevice.Position.back
+    public var devicePosition = AVCaptureDevice.Position.back
 
-    var videoQuality = AVCaptureSession.Preset.high
+    public var videoQuality = AVCaptureSession.Preset.high
 
-    var isRecording: Bool {
-        return recorder.assetWriter != nil
-    }
-
-    var filters: [CIFilter] = [] {
+    public var filters: [CIFilter] = [] {
         didSet {
             recorder.filters = filters
         }
     }
 
-    var hasTorch: Bool {
+    public var hasTorch: Bool {
         return recorder.hasTorch
     }
 
-    var torchLevel: Float {
+    public var torchLevel: Float {
         set {
             recorder.torchLevel = newValue
         }
@@ -48,7 +44,7 @@ public class FilterCamViewController: UIViewController {
         }
     }
 
-    var shouldShowDebugLabels: Bool = false {
+    public var shouldShowDebugLabels: Bool = false {
         didSet {
             fpsLabel.isHidden = !shouldShowDebugLabels
             secLabel.isHidden = !shouldShowDebugLabels
@@ -71,15 +67,19 @@ public class FilterCamViewController: UIViewController {
 
     private var secLabel: UILabel!
 
-    override public var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    private var isRecording: Bool {
+        return recorder.assetWriter != nil
+    }
+
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
 
-    override public var shouldAutorotate: Bool {
+    override open var shouldAutorotate: Bool {
         return false
     }
 
-    init(previewViewRect: CGRect) {
+    public init(previewViewRect: CGRect) {
         self.previewViewRect = previewViewRect
         super.init(nibName: nil, bundle: nil)
     }
@@ -89,7 +89,7 @@ public class FilterCamViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .clear
@@ -199,13 +199,13 @@ public class FilterCamViewController: UIViewController {
 
     // MARK: - Public
 
-    func startRecording() {
+    public func startRecording() {
         if !isRecording {
             recorder.startRecording()
         }
     }
 
-    func stopRecording() {
+    public func stopRecording() {
         if isRecording {
             recorder.stopRecording()
         }
