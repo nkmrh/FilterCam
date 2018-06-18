@@ -7,13 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		64A3BC2F20D4D61700CF0E79 /* FilterCam.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A3BC2D20D4D61700CF0E79 /* FilterCam.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64A3BCA420D7A73E00CF0E79 /* RecorderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC9B20D7A73E00CF0E79 /* RecorderError.swift */; };
+		64A3BCA520D7A73E00CF0E79 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC9C20D7A73E00CF0E79 /* Recorder.swift */; };
+		64A3BCA620D7A73E00CF0E79 /* Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC9D20D7A73E00CF0E79 /* Capture.swift */; };
+		64A3BCA720D7A73E00CF0E79 /* FilterCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC9E20D7A73E00CF0E79 /* FilterCamViewController.swift */; };
+		64A3BCA820D7A73E00CF0E79 /* CaptureError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BC9F20D7A73E00CF0E79 /* CaptureError.swift */; };
+		64A3BCA920D7A73E00CF0E79 /* Composer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BCA020D7A73E00CF0E79 /* Composer.swift */; };
+		64A3BCAC20D7A73E00CF0E79 /* FrameRateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A3BCA320D7A73E00CF0E79 /* FrameRateCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		64A3BC2A20D4D61700CF0E79 /* FilterCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FilterCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64A3BC2D20D4D61700CF0E79 /* FilterCam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterCam.h; sourceTree = "<group>"; };
-		64A3BC2E20D4D61700CF0E79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A3BC9B20D7A73E00CF0E79 /* RecorderError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderError.swift; sourceTree = "<group>"; };
+		64A3BC9C20D7A73E00CF0E79 /* Recorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		64A3BC9D20D7A73E00CF0E79 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
+		64A3BC9E20D7A73E00CF0E79 /* FilterCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCamViewController.swift; sourceTree = "<group>"; };
+		64A3BC9F20D7A73E00CF0E79 /* CaptureError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureError.swift; sourceTree = "<group>"; };
+		64A3BCA020D7A73E00CF0E79 /* Composer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composer.swift; sourceTree = "<group>"; };
+		64A3BCA320D7A73E00CF0E79 /* FrameRateCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameRateCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,7 +41,7 @@
 		64A3BC2020D4D61700CF0E79 = {
 			isa = PBXGroup;
 			children = (
-				64A3BC2C20D4D61700CF0E79 /* FilterCam */,
+				64A3BC9A20D7A73E00CF0E79 /* FilterCam */,
 				64A3BC2B20D4D61700CF0E79 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,11 +54,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		64A3BC2C20D4D61700CF0E79 /* FilterCam */ = {
+		64A3BC9A20D7A73E00CF0E79 /* FilterCam */ = {
 			isa = PBXGroup;
 			children = (
-				64A3BC2D20D4D61700CF0E79 /* FilterCam.h */,
-				64A3BC2E20D4D61700CF0E79 /* Info.plist */,
+				64A3BC9B20D7A73E00CF0E79 /* RecorderError.swift */,
+				64A3BC9C20D7A73E00CF0E79 /* Recorder.swift */,
+				64A3BC9D20D7A73E00CF0E79 /* Capture.swift */,
+				64A3BC9E20D7A73E00CF0E79 /* FilterCamViewController.swift */,
+				64A3BC9F20D7A73E00CF0E79 /* CaptureError.swift */,
+				64A3BCA020D7A73E00CF0E79 /* Composer.swift */,
+				64A3BCA320D7A73E00CF0E79 /* FrameRateCalculator.swift */,
 			);
 			path = FilterCam;
 			sourceTree = "<group>";
@@ -59,7 +75,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64A3BC2F20D4D61700CF0E79 /* FilterCam.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +145,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A3BCA620D7A73E00CF0E79 /* Capture.swift in Sources */,
+				64A3BCA420D7A73E00CF0E79 /* RecorderError.swift in Sources */,
+				64A3BCA720D7A73E00CF0E79 /* FilterCamViewController.swift in Sources */,
+				64A3BCA520D7A73E00CF0E79 /* Recorder.swift in Sources */,
+				64A3BCAC20D7A73E00CF0E79 /* FrameRateCalculator.swift in Sources */,
+				64A3BCA820D7A73E00CF0E79 /* CaptureError.swift in Sources */,
+				64A3BCA920D7A73E00CF0E79 /* Composer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +290,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FilterCam/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,6 +316,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = FilterCam/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

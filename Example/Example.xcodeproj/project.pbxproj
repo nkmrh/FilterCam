@@ -34,7 +34,6 @@
 		64A3BC5E20D4E20E00CF0E79 /* Capture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Capture.swift; sourceTree = "<group>"; };
 		64A3BC5F20D4E20E00CF0E79 /* FilterCamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCamViewController.swift; sourceTree = "<group>"; };
 		64A3BC6020D4E20E00CF0E79 /* CaptureError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureError.swift; sourceTree = "<group>"; };
-		64A3BC6120D4E20E00CF0E79 /* FilterCam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterCam.h; sourceTree = "<group>"; };
 		64A3BC6320D4E20E00CF0E79 /* FrameRateCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameRateCalculator.swift; sourceTree = "<group>"; };
 		64A3BC6B20D4FC7100CF0E79 /* Composer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,7 +87,6 @@
 				64A3BC5E20D4E20E00CF0E79 /* Capture.swift */,
 				64A3BC5F20D4E20E00CF0E79 /* FilterCamViewController.swift */,
 				64A3BC6020D4E20E00CF0E79 /* CaptureError.swift */,
-				64A3BC6120D4E20E00CF0E79 /* FilterCam.h */,
 				64A3BC6320D4E20E00CF0E79 /* FrameRateCalculator.swift */,
 				64A3BC6B20D4FC7100CF0E79 /* Composer.swift */,
 			);
