@@ -1,7 +1,7 @@
 <img src="images/FilterCam.png"  align="center">
 
 <p align="center">
-    <img src="https://img.shields.io/badge/platform-iOS%208%2B-blue.svg"/>
+    <img src="https://img.shields.io/badge/platform-iOS%2010%2B-blue.svg"/>
     <img src="https://img.shields.io/badge/language-swift%204.1-green.svg" />
     <img src="https://img.shields.io/badge/pod-v1.0.0-blue.svg" />
     <img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" /> <br><br>
@@ -15,7 +15,7 @@ FilterCam is a simple iOS camera framework for recording videos with custom CIFi
 
 |       | FilterCam |
 | --------- | -----|
-| :+1: | Support iOS 8.0+  |
+| :+1: | Support iOS 10.0+  |
 | :movie_camera: | Video capture  |
 | :eyeglasses: | Custom filter  |
 | :chart_with_upwards_trend: | Manual image quality settings  |
@@ -27,7 +27,7 @@ FilterCam is a simple iOS camera framework for recording videos with custom CIFi
 
 ## Requirements
 
-- iOS 8.0+
+- iOS 10.0+
 
 - Swift 4.1+
 
