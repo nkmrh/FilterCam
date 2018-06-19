@@ -1,10 +1,12 @@
-<img src="images/FilterCam.png"  align="center">
-
 <p align="center">
+	<img src="images/FilterCam.png">
+	<br><br>
     <img src="https://img.shields.io/badge/platform-iOS%2010%2B-blue.svg"/>
     <img src="https://img.shields.io/badge/language-swift%204.1-green.svg" />
     <img src="https://img.shields.io/badge/pod-v1.0.0-blue.svg" />
-    <img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" /> <br><br>
+    <img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" />
+    <br><br>
+	<img src="images/demo.gif" align="center">
 </p>
 
 ## Overview
@@ -190,4 +192,7 @@ Video quality can be set by the videoQuality property of FilterCamViewController
 ## Contact
 
 If you have any questions, requests, or enhancements, feel free to submit a pull request, create an issue.
+
+**Hajime Nakamura**
+**nkmrhj@gmail.com**
 
