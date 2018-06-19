@@ -42,7 +42,7 @@ FilterCam is available under the MIT license. See the LICENSE file for more info
 Add this to `Cartfile`
 
 ```
-github "nkmrh/FilterCam"`
+github "nkmrh/FilterCam"
 ```
 
 ```
