@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import CoreImage
+import UIKit
 
 protocol RecorderDelegate: class {
     func recorderDidUpdate(drawingImage: CIImage)
@@ -73,6 +74,8 @@ final class Recorder: NSObject {
     private let frameRateCalculator = FrameRateCalculator()
     private var timer: Timer?
     private let timerUpdateInterval = 0.25
+    
+    private var devicePosition: AVCaptureDevice.Position?
 
     private var temporaryVideoFileURL: URL {
         return URL(fileURLWithPath: NSTemporaryDirectory())
@@ -135,7 +138,7 @@ final class Recorder: NSObject {
 
         let channelLayoutData: Data
         var layoutSize: size_t = 0
-        if let channelLayout = CMAudioFormatDescriptionGetChannelLayout(currentAudioSampleBufferFormatDescription, &layoutSize) {
+        if let channelLayout = CMAudioFormatDescriptionGetChannelLayout(currentAudioSampleBufferFormatDescription, sizeOut: &layoutSize) {
             channelLayoutData = Data(bytes: channelLayout, count: layoutSize)
         } else {
             channelLayoutData = Data()
@@ -178,6 +181,7 @@ final class Recorder: NSObject {
          devicePosition: AVCaptureDevice.Position,
          preset: AVCaptureSession.Preset) {
         self.ciContext = ciContext
+        self.devicePosition = devicePosition
 
         super.init()
 
@@ -194,12 +198,12 @@ final class Recorder: NSObject {
 
         // handle UIApplicationDidEnterBackgroundNotification
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)),
-                                               name: .UIApplicationDidEnterBackground,
+                                               name: UIApplication.didEnterBackgroundNotification,
                                                object: nil)
     }
 
     func startRecording() {
-        capture.queue.async {
+        capture.queue.async { [unowned self] in
             self.removeTemporaryVideoFileIfAny()
 
             guard let newAssetWriter = self.makeAssetWriter() else { return }
@@ -282,7 +286,7 @@ final class Recorder: NSObject {
             self.delegate?.recorderWillStartWriting()
         }
 
-        capture.queue.async {
+        capture.queue.async { [unowned self] in
             writer.endSession(atSourceTime: self.currentVideoTime)
             writer.finishWriting {
                 switch writer.status {
@@ -352,7 +356,14 @@ final class Recorder: NSObject {
         currentVideoDimensions = CMVideoFormatDescriptionGetDimensions(formatDesc)
 
         guard let imageBuffer = CMSampleBufferGetImageBuffer(buffer) else { return }
-        let sourceImage = CIImage(cvPixelBuffer: imageBuffer)
+        
+        var sourceImage : CIImage!
+        
+        if(self.devicePosition == AVCaptureDevice.Position.front){
+            sourceImage = CIImage(cvPixelBuffer: imageBuffer).oriented(.downMirrored)
+        }else{
+            sourceImage = CIImage(cvPixelBuffer: imageBuffer)
+        }
 
         // run the filter through the filter chain
         guard let filteredImage = runFilter(cameraImage: sourceImage, filters: filters) else { return }

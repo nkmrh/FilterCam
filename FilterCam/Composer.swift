@@ -24,17 +24,17 @@ struct Composer {
         let videoComposition = AVMutableVideoComposition()
         videoComposition.renderSize = CGSize(width: clipVideoTrack.naturalSize.height,
                                              height: clipVideoTrack.naturalSize.width)
-        videoComposition.frameDuration = CMTimeMake(1, 30)
+        videoComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
 
         let instruction = AVMutableVideoCompositionInstruction()
-        instruction.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration)
+        instruction.timeRange = CMTimeRangeMake(start: CMTime.zero, duration: asset.duration)
 
         let transformer = AVMutableVideoCompositionLayerInstruction(assetTrack: clipVideoTrack)
         let t1 = CGAffineTransform(translationX: clipVideoTrack.naturalSize.height, y: 0)
         let t2 = t1.rotated(by: .pi / 2)
 
         let finalTransform = t2
-        transformer.setTransform(finalTransform, at: kCMTimeZero)
+        transformer.setTransform(finalTransform, at: CMTime.zero)
         instruction.layerInstructions = [transformer]
         videoComposition.instructions = [instruction]
 

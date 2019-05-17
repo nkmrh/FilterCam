@@ -97,8 +97,7 @@ final class Capture {
 
         do {
             try AVAudioSession.sharedInstance().setActive(false)
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord,
-                                                            with: [.mixWithOthers, .defaultToSpeaker, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP])
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .videoRecording, options: [.mixWithOthers, .defaultToSpeaker, .allowBluetooth, .allowAirPlay, .allowBluetoothA2DP])
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             NSLog("Failed to set background audio preference")
@@ -139,7 +138,7 @@ final class Capture {
 
         delegate?.captureWillStart()
 
-        queue.async {
+        queue.async { [unowned self] in
 
             // obtain device input
             guard let videoDeviceInput = self.videoDeviceInput else { return }
@@ -214,4 +213,9 @@ final class Capture {
             // just ignore
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }
