@@ -5,13 +5,11 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 struct Composer {
-
-    static func compose(videoURL: URL, outputURL: URL, completion: @escaping (URL?, Error?) -> ()) {
-
+    static func compose(videoURL: URL, outputURL: URL, completion: @escaping (URL?, Error?) -> Void) {
         let asset = AVURLAsset(url: videoURL)
 
         let composition = AVMutableComposition()

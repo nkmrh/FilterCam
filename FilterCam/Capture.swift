@@ -5,8 +5,8 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 protocol CaptureDelegate: class {
     func captureWillStart()
@@ -17,7 +17,6 @@ protocol CaptureDelegate: class {
 }
 
 final class Capture {
-
     weak var delegate: CaptureDelegate?
     weak var videoDataOutputSampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
     weak var audioDataOutputSampleBufferDelegate: AVCaptureAudioDataOutputSampleBufferDelegate?

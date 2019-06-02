@@ -5,20 +5,19 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import UIKit
 import Photos
+import UIKit
 
 final class ViewController: FilterCamViewController {
-
-    @IBOutlet weak private var controlPanelView: UIView!
-    @IBOutlet weak private var segmentedControl: UISegmentedControl!
-    @IBOutlet weak private var torchButton: UIButton!
-    @IBOutlet weak private var recordButton: UIButton!
+    @IBOutlet private var controlPanelView: UIView!
+    @IBOutlet private var segmentedControl: UISegmentedControl!
+    @IBOutlet private var torchButton: UIButton!
+    @IBOutlet private var recordButton: UIButton!
 
     private let myFilters: [[CIFilter]] = [
         [],
         [CIFilter(name: "CIPhotoEffectInstant")!],
-        [CIFilter(name: "CIPhotoEffectInstant")!, CIFilter(name: "CIPhotoEffectNoir")!]
+        [CIFilter(name: "CIPhotoEffectInstant")!, CIFilter(name: "CIPhotoEffectNoir")!],
     ]
 
     override func viewDidLoad() {
@@ -65,15 +64,15 @@ final class ViewController: FilterCamViewController {
 }
 
 extension ViewController: FilterCamViewControllerDelegate {
-    func filterCamDidStartRecording(_ filterCam: FilterCamViewController) {}
+    func filterCamDidStartRecording(_: FilterCamViewController) {}
 
-    func filterCamDidFinishRecording(_ filterCame: FilterCamViewController) {}
+    func filterCamDidFinishRecording(_: FilterCamViewController) {}
 
-    func filterCam(_ filterCam: FilterCamViewController, didFinishWriting outputURL: URL) {
+    func filterCam(_: FilterCamViewController, didFinishWriting outputURL: URL) {
         saveVideoToPhotos(outputURL)
     }
 
-    func filterCam(_ filterCam: FilterCamViewController, didFocusAtPoint tapPoint: CGPoint) {}
+    func filterCam(_: FilterCamViewController, didFocusAtPoint _: CGPoint) {}
 
-    func filterCam(_ filterCam: FilterCamViewController, didFailToRecord error: Error) {}
+    func filterCam(_: FilterCamViewController, didFailToRecord _: Error) {}
 }
