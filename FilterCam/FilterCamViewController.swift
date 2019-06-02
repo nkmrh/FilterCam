@@ -97,7 +97,7 @@ open class FilterCamViewController: UIViewController {
         videoPreviewContainerView = UIView(frame: previewViewRect)
         videoPreviewContainerView.backgroundColor = .black
         view.addSubview(videoPreviewContainerView)
-        view.sendSubview(toBack: videoPreviewContainerView)
+        view.sendSubviewToBack(videoPreviewContainerView)
 
         // setup the GLKView for video/image preview
         guard let eaglContext = EAGLContext(api: .openGLES2) else {
@@ -124,7 +124,7 @@ open class FilterCamViewController: UIViewController {
         videoPreviewViewBounds.size.height = CGFloat(videoPreviewView.drawableHeight)
 
         // create the CIContext instance, note that this must be done after _videoPreviewView is properly set up
-        ciContext = CIContext(eaglContext: eaglContext, options: [kCIContextWorkingColorSpace: NSNull()])
+        ciContext = CIContext(eaglContext: eaglContext, options: [CIContextOption.workingColorSpace: NSNull()])
 
         recorder = Recorder(ciContext: ciContext, devicePosition: devicePosition, preset: videoQuality)
         recorder.delegate = self
