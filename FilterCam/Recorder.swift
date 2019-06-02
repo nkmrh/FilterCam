@@ -202,7 +202,7 @@ final class Recorder: NSObject {
     }
 
     func startRecording() {
-        capture.queue.async {
+        capture.queue.async { [unowned self] in
             self.removeTemporaryVideoFileIfAny()
 
             guard let newAssetWriter = self.makeAssetWriter() else { return }
@@ -285,7 +285,7 @@ final class Recorder: NSObject {
             self.delegate?.recorderWillStartWriting()
         }
 
-        capture.queue.async {
+        capture.queue.async { [unowned self] in
             writer.endSession(atSourceTime: self.currentVideoTime)
             writer.finishWriting {
                 switch writer.status {

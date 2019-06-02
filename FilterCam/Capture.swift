@@ -135,7 +135,7 @@ final class Capture {
 
         delegate?.captureWillStart()
 
-        queue.async {
+        queue.async { [unowned self] in
 
             // obtain device input
             guard let videoDeviceInput = self.videoDeviceInput else { return }
