@@ -119,7 +119,7 @@ final class Recorder: NSObject {
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
             kCVPixelBufferWidthKey as String: currentVideoDimensions?.width ?? 0,
             kCVPixelBufferHeightKey as String: currentVideoDimensions?.height ?? 0,
-            kCVPixelFormatOpenGLESCompatibility as String: kCFBooleanTrue,
+            kCVPixelFormatOpenGLESCompatibility as String: kCFBooleanTrue!,
         ]
         return AVAssetWriterInputPixelBufferAdaptor(
             assetWriterInput: input,
