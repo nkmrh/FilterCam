@@ -14,4 +14,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/nkmrh/FilterCam.git", :tag => s.version }
   s.source_files  = "FilterCam/*.swift"
   s.requires_arc = true
+  s.swift_version = '5'
 end
