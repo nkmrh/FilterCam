@@ -5,9 +5,9 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 import CoreImage
+import Foundation
 import UIKit
 
 protocol RecorderDelegate: class {
@@ -23,7 +23,6 @@ protocol RecorderDelegate: class {
 }
 
 final class Recorder: NSObject {
-
     weak var delegate: RecorderDelegate?
 
     var filters: [CIFilter] = []
@@ -53,9 +52,9 @@ final class Recorder: NSObject {
         }
     }
 
-    static private let deviceRgbColorSpace = CGColorSpaceCreateDeviceRGB()
-    static private let tempVideoFilename = "recording"
-    static private let tempVideoFileExtention = "mov"
+    private static let deviceRgbColorSpace = CGColorSpaceCreateDeviceRGB()
+    private static let tempVideoFilename = "recording"
+    private static let tempVideoFileExtention = "mov"
 
     private let ciContext: CIContext
     private var capture: Capture!
@@ -119,7 +118,7 @@ final class Recorder: NSObject {
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
             kCVPixelBufferWidthKey as String: currentVideoDimensions?.width ?? 0,
             kCVPixelBufferHeightKey as String: currentVideoDimensions?.height ?? 0,
-            kCVPixelFormatOpenGLESCompatibility as String: kCFBooleanTrue,
+            kCVPixelFormatOpenGLESCompatibility as String: kCFBooleanTrue!,
         ]
         return AVAssetWriterInputPixelBufferAdaptor(
             assetWriterInput: input,
@@ -166,7 +165,7 @@ final class Recorder: NSObject {
             return nil
         }
 
-        var pixelBuffer: CVPixelBuffer? = nil
+        var pixelBuffer: CVPixelBuffer?
         CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
         guard let renderedOutputPixelBuffer = pixelBuffer else {
             NSLog("Cannot obtain a pixel buffer from the buffer pool")
@@ -202,7 +201,7 @@ final class Recorder: NSObject {
     }
 
     func startRecording() {
-        capture.queue.async {
+        capture.queue.async { [unowned self] in
             self.removeTemporaryVideoFileIfAny()
 
             guard let newAssetWriter = self.makeAssetWriter() else { return }
@@ -285,7 +284,7 @@ final class Recorder: NSObject {
             self.delegate?.recorderWillStartWriting()
         }
 
-        capture.queue.async {
+        capture.queue.async { [unowned self] in
             writer.endSession(atSourceTime: self.currentVideoTime)
             writer.finishWriting {
                 switch writer.status {
@@ -315,11 +314,11 @@ final class Recorder: NSObject {
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: timerUpdateInterval,
                                      repeats: true) { [weak self] _ in
-                                        guard let strongSelf = self else { return }
-                                        DispatchQueue.main.async {
-                                            strongSelf.delegate?.recorderDidUpdate(frameRate: strongSelf.frameRate)
-                                            strongSelf.delegate?.recorderDidUpdate(recordingSeconds: strongSelf.recordingSeconds)
-                                        }
+            guard let strongSelf = self else { return }
+            DispatchQueue.main.async {
+                strongSelf.delegate?.recorderDidUpdate(frameRate: strongSelf.frameRate)
+                strongSelf.delegate?.recorderDidUpdate(recordingSeconds: strongSelf.recordingSeconds)
+            }
         }
     }
 
@@ -355,7 +354,7 @@ final class Recorder: NSObject {
         currentVideoDimensions = CMVideoFormatDescriptionGetDimensions(formatDesc)
 
         guard let imageBuffer = CMSampleBufferGetImageBuffer(buffer) else { return }
-        let sourceImage : CIImage
+        let sourceImage: CIImage
         if devicePosition == .front {
             let image = CIImage(cvPixelBuffer: imageBuffer)
             var transform = CGAffineTransform.identity
@@ -424,18 +423,17 @@ final class Recorder: NSObject {
         }
     }
 
-    @objc private func avCaptureSessionWasInterrupted(_ notification: Notification) {
+    @objc private func avCaptureSessionWasInterrupted(_: Notification) {
         stopRecording()
     }
 
-    @objc private func applicationDidEnterBackground(_ notification: Notification) {
+    @objc private func applicationDidEnterBackground(_: Notification) {
         stopRecording()
     }
 }
 
 extension Recorder: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate {
-
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    func captureOutput(_: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from _: AVCaptureConnection) {
         guard let formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer) else { return }
         let mediaType = CMFormatDescriptionGetMediaType(formatDesc)
         if mediaType == kCMMediaType_Audio {
@@ -458,7 +456,6 @@ extension Recorder: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudio
 }
 
 extension Recorder: CaptureDelegate {
-
     func captureWillStart() {
         stopTimer()
         frameRateCalculator.reset()

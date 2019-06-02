@@ -5,11 +5,10 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 final class FrameRateCalculator {
-
     var previousSecondTimestamps: [CMTime] = []
     var frameRate: Float = 0
 

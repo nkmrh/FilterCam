@@ -5,8 +5,8 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 enum CaptureError: Error {
     case presetNotSupportedByVideoDevice(AVCaptureSession.Preset)

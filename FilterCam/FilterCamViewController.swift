@@ -5,9 +5,9 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import UIKit
-import GLKit
 import AVFoundation
+import GLKit
+import UIKit
 
 public protocol FilterCamViewControllerDelegate: class {
     func filterCamDidStartRecording(_ filterCam: FilterCamViewController)
@@ -18,7 +18,6 @@ public protocol FilterCamViewControllerDelegate: class {
 }
 
 open class FilterCamViewController: UIViewController {
-
     public weak var cameraDelegate: FilterCamViewControllerDelegate?
 
     public var devicePosition = AVCaptureDevice.Position.back
@@ -71,11 +70,11 @@ open class FilterCamViewController: UIViewController {
         return recorder.assetWriter != nil
     }
 
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
 
-    override open var shouldAutorotate: Bool {
+    open override var shouldAutorotate: Bool {
         return false
     }
 
@@ -84,12 +83,12 @@ open class FilterCamViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         previewViewRect = UIScreen.main.bounds
         super.init(coder: aDecoder)
     }
 
-    override open func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .clear
@@ -213,7 +212,6 @@ open class FilterCamViewController: UIViewController {
 }
 
 extension FilterCamViewController: RecorderDelegate {
-
     func recorderDidUpdate(drawingImage: CIImage) {
         let drawRect = calculateDrawRect(for: drawingImage)
         videoPreviewView.bindDrawable()

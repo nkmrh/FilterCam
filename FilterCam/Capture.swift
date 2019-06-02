@@ -5,8 +5,8 @@
 //  Copyright © 2018 hajime-nakamura. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 protocol CaptureDelegate: class {
     func captureWillStart()
@@ -17,7 +17,6 @@ protocol CaptureDelegate: class {
 }
 
 final class Capture {
-
     weak var delegate: CaptureDelegate?
     weak var videoDataOutputSampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
     weak var audioDataOutputSampleBufferDelegate: AVCaptureAudioDataOutputSampleBufferDelegate?
@@ -26,20 +25,17 @@ final class Capture {
         return videoDevice.hasTorch
     }
 
-    var torchLevel: Float {
-        set {
+    var torchLevel: Float = 0 {
+        didSet {
             if !hasTorch { return }
             if !videoDevice.isTorchAvailable { return }
             try? videoDevice.lockForConfiguration()
-            if newValue > 0.1 {
-                try? videoDevice.setTorchModeOn(level: newValue)
+            if torchLevel > 0.1 {
+                try? videoDevice.setTorchModeOn(level: torchLevel)
             } else {
                 videoDevice.torchMode = .off
             }
             videoDevice.unlockForConfiguration()
-        }
-        get {
-            return self.torchLevel
         }
     }
 
@@ -138,7 +134,7 @@ final class Capture {
 
         delegate?.captureWillStart()
 
-        queue.async {
+        queue.async { [unowned self] in
 
             // obtain device input
             guard let videoDeviceInput = self.videoDeviceInput else { return }
