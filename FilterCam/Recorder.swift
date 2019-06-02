@@ -59,6 +59,7 @@ final class Recorder: NSObject {
 
     private let ciContext: CIContext
     private var capture: Capture!
+    private let devicePosition: AVCaptureDevice.Position!
 
     private var videoWritingStarted = false
     private var videoWritingStartTime = CMTime()
@@ -179,6 +180,7 @@ final class Recorder: NSObject {
          devicePosition: AVCaptureDevice.Position,
          preset: AVCaptureSession.Preset) {
         self.ciContext = ciContext
+        self.devicePosition = devicePosition
 
         super.init()
 
@@ -353,7 +355,16 @@ final class Recorder: NSObject {
         currentVideoDimensions = CMVideoFormatDescriptionGetDimensions(formatDesc)
 
         guard let imageBuffer = CMSampleBufferGetImageBuffer(buffer) else { return }
-        let sourceImage = CIImage(cvPixelBuffer: imageBuffer)
+        let sourceImage : CIImage
+        if devicePosition == .front {
+            let image = CIImage(cvPixelBuffer: imageBuffer)
+            var transform = CGAffineTransform.identity
+            transform = transform.translatedBy(x: 0, y: image.extent.height)
+            transform = transform.scaledBy(x: 1, y: -1)
+            sourceImage = image.transformed(by: transform)
+        } else {
+            sourceImage = CIImage(cvPixelBuffer: imageBuffer)
+        }
 
         // run the filter through the filter chain
         guard let filteredImage = runFilter(cameraImage: sourceImage, filters: filters) else { return }
