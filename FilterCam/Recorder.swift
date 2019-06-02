@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import CoreImage
+import UIKit
 
 protocol RecorderDelegate: class {
     func recorderDidUpdate(drawingImage: CIImage)
@@ -135,7 +136,7 @@ final class Recorder: NSObject {
 
         let channelLayoutData: Data
         var layoutSize: size_t = 0
-        if let channelLayout = CMAudioFormatDescriptionGetChannelLayout(currentAudioSampleBufferFormatDescription, &layoutSize) {
+        if let channelLayout = CMAudioFormatDescriptionGetChannelLayout(currentAudioSampleBufferFormatDescription, sizeOut: &layoutSize) {
             channelLayoutData = Data(bytes: channelLayout, count: layoutSize)
         } else {
             channelLayoutData = Data()
@@ -194,7 +195,7 @@ final class Recorder: NSObject {
 
         // handle UIApplicationDidEnterBackgroundNotification
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)),
-                                               name: .UIApplicationDidEnterBackground,
+                                               name: UIApplication.didEnterBackgroundNotification,
                                                object: nil)
     }
 
